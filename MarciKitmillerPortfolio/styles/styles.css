@@ -1,3 +1,8 @@
 .art-photo {
     width: 300px;
+    height: 150px;
+}
+
+nav a {
+    padding: 20px;
 }
