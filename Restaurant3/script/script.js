@@ -1,10 +1,11 @@
 // classes
 
 class MenuItem {
-    constructor(name, eyeCatcher, description){
+    constructor(name, eyeCatcher, description, price){
         _name = name;
         _eyeCatcher = eyeCatcher;
         _description = description;
+        _price = price;
     }
 }
 
@@ -14,11 +15,23 @@ class Restaurant {
         /*_menuItems = menuItems;*/
     }
     DisplayName = () => {
-        document.getElementById("RestaurantTitle").innerText = this._name;
+        document.getElementsByTagName("main")[0].appendChild((`<h1>${this._name}</h1>`));
+    }
+    PrintName = () => {
+        return this._name;
     }
 
 }
 
+
+// store
+
+let menu = [
+
+]
+
+let InakinKita = new Restaurant(
+    "Inakin Kita ");
 
 // program
     // menu = [
@@ -29,6 +42,5 @@ class Restaurant {
     //     }
     // ]
 
-let InakinKita = new Restaurant(
-    "Inakin Kita ");
-console.log(InakinKita._name);
+// console.log(InakinKita.PrintName());
+InakinKita.DisplayName();
