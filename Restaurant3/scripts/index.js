@@ -15,7 +15,7 @@ class Restaurant {
         /*_menuItems = menuItems;*/
     }
     DisplayName = () => {
-        document.getElementsByTagName("main")[0].appendChild((`<h1>${this._name}</h1>`));
+        document.getElementById("main")[0].appendChild((`<h1>${this._name}</h1>`));
     }
     PrintName = () => {
         return this._name;
@@ -27,6 +27,28 @@ class Restaurant {
 // store
 
 let menu = [
+    new MenuItem(
+        "Burger and Fries",
+        "An American Classic!",
+        [
+            "Your choice - with or without cheese",
+            "Pickle, onion, tomato, and lettuce",
+            "Served with our famous thick cut",
+            "french fries"
+        ],
+        7.95
+    ),
+    new MenuItem(
+        "Hot Dog",
+        "An American Classic!",
+        [
+            "Your choice - with or without cheese",
+            "Pickle, onion, tomato, and lettuce",
+            "Served with our famous thick cut",
+            "french fries"
+        ],
+        7.95
+    ),
 
 ]
 
