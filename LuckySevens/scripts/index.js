@@ -7,7 +7,7 @@ class LuckySevens {
     }
 
     RollDice = () => {
-        return Math.ceil(Math.random() * 6);
+        return Math.floor(Math.random() * 6) + 1;
     }
 
     Bet = () => {
@@ -24,66 +24,52 @@ class LuckySevens {
         }
     }
 
-    Play = () => {
-        // our gameplay program
+    Session = () => {
+        while(this._cash > 0){
+            this.Bet();
+            this.UpdateRecord();
+        }
     }
 
     RenderResults = () => {
-        // render table showing results
-        let results = document.querySelector("#results");
+        let results = document.getElementById("results");
         results.innerHTML = 
-        `<tbody>
-            <tr>
-                <td>Starting Bet</td>
-                <td>${this._start}</td>
-            </tr>
-            <tr>
-                <td>Total Rolls Before Going Broke</td>
-                <td>${this._rollCount}</td>
-            </tr>
-            <tr>
-                <td>Highest Amount Won</td>
-                <td>${this._peak}</td>
-            </tr>
-            <tr>
-                <td>Roll Count at Highest Amount Won</td>
-                <td>${this._peakPosition}</td>
-            </tr>
-        </tbody>`
+        `<h1>Results</h1>
+        <table>
+            <tbody>
+                <tr>
+                    <th colspan="2" class="text-center">Results</th>
+                </tr>
+                <tr>
+                    <td>Starting Bet</td>
+                    <td>$${this._start.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td>Total Rolls Before Going Broke</td>
+                    <td>${this._rollCount}</td>
+                </tr>
+                <tr>
+                    <td>Highest Amount Won</td>
+                    <td>$${this._peak.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td>Roll Count at Highest Amount Won</td>
+                    <td>${this._peakPosition}</td>
+                </tr>
+            </tbody>
+        </table>`
+        results.style.marginTop = "1rem";
+        results.style.borderTop = "2px solid black";
     }
-
-    ConsoleBet = () => {
-        let Roll1 = this.RollDice();
-        let Roll2 = this.RollDice();
-        console.log(`----------------------------`)
-        console.log(`Bet #${this._rollCount + 1}`)
-        console.log(`Old Cash ===> ${this._cash}`)
-        console.log(`curr peak ==> ${this._peak}`)
-        console.log(`curr pp ====> ${this._peakPosition}`)
-        console.log(`Roll #1 ====> ${Roll1}`)
-        console.log(`Roll #2 ====> ${Roll2}`)
-        this._cash += (Roll1 + Roll2) === 7 ? 4 : -1;
-        console.log(`New Cash ===> ${this._cash}`)
-    }
-    
-    ConsoleResults = () => {
-        console.log(`------------RESULTS----------------`)
-        console.log(`starting cash ===> ${this._start}`);
-        console.log(`roll count ======> ${this._rollCount}`);
-        console.log(`peak ============> ${this._peak}`);
-        console.log(`peak position ===> ${this._peakPosition}`);
-        console.log(`-----------------------------------`)
-    }
-
 }
 
-// program
-
-// test play
-
-let testgame = new LuckySevens(10);
-while(testgame._cash > 0){
-    testgame.ConsoleBet();
-    testgame.UpdateRecord();
+let Play = () => {
+    let starting = Number(document.getElementById('starting').value);
+    if(starting > 0) {
+        let game = new LuckySevens(starting);
+        game.Session();
+        game.RenderResults();
+    } else {
+        alert("Invalid Starting Amount");
+    }
 }
-testgame.ConsoleResults();
