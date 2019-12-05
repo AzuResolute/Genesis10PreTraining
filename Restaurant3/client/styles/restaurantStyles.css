@@ -1,0 +1,58 @@
+/* General */
+
+*{
+    font-family: Georgia, Serif;
+}
+
+h1 {
+    color: whitesmoke;
+    margin-bottom: 0;
+    padding: 2rem;
+}
+
+#title {
+    font-family: Georgia, Serif;
+    font-style: italic;
+    text-align: center;
+}
+
+.navbar {
+    border-top: 2px dotted rgba(84, 43, 187, 0.5);
+    border-bottom: 2px dotted rgba(84, 43, 187, 0.5);
+    background-color: turquoise;
+    justify-content: flex-start;
+}
+
+nav a {
+    margin: 0 1rem;
+    border: whitesmoke ridge 3px;
+    background-color: aqua;
+}
+
+nav a :visited {
+    color: salmon;
+}
+
+nav :hover {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.carousel-item {
+    opacity: 0.8;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+body{
+    background-color: skyblue;
+}
+
+footer {
+    background-color: turquoise;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: small;
+    margin-top: 1rem;
+    border-top: 2px dotted rgba(84, 43, 187, 0.5);
+    border-bottom: 2px dotted rgba(84, 43, 187, 0.5);
+}
